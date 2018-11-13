@@ -1,0 +1,13 @@
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const port = process.env.PORT || 8000;
+const config = require('./config/dev');
+
+mongoose.connect(config.mongoURI);
+
+require('./routes/fetchCount')(app);
+
+app.listen(port, function() {
+	console.log(`Server on ${port}`);
+});
